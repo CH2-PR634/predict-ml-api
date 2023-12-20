@@ -33,6 +33,11 @@ def remove_background(input_path, output_path):
         raise ValueError(f"Error during background removal: {str(e)}")
 
 
+@app.route('/')
+def index():
+    return jsonify({'status': 'success', 'message': 'OK'})
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -64,4 +69,4 @@ def predict():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=False, host='0.0.0.0', port=8000)
